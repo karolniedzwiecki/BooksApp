@@ -42,15 +42,17 @@
     /* loop after each booksImage item */
     for (let image of booksImage) {
       image.addEventListener('dblclick', function (event) {
-      event.preventDefault();
-      image.classList.add('favorite');
-      /* get the id from its data-id - book id */
-      const idBook = image.getAttribute('data-id');
-      /* add id to favoriteBooks table */
-      favoriteBooks.push(idBook);
+        event.preventDefault();
+        const idBook = image.getAttribute('data-id');
+        if (!favoriteBooks.includes(idBook)) {
+          image.classList.add('favorite');
+          favoriteBooks.push(idBook);
+        } else {
+          image.classList.remove('favorite');
+          favoriteBooks.splice(favoriteBooks.indexOf(idBook), 1);
+        }
       });
     }
   }
-
   initActions();
 }
