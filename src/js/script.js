@@ -43,6 +43,7 @@
     for (let image of booksImage) {
       image.addEventListener('dblclick', function (event) {
         event.preventDefault();
+        const image = event.target.offsetParent;
         const idBook = image.getAttribute('data-id');
         if (!favoriteBooks.includes(idBook)) {
           image.classList.add('favorite');
